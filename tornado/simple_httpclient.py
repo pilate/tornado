@@ -212,7 +212,7 @@ class _HTTPConnection(httputil.HTTPMessageDelegate):
         self._sockaddr = None
         with stack_context.ExceptionStackContext(self._handle_exception):
             self.parsed = urlparse.urlsplit(_unicode(self.request.url))
-            if self.parsed.scheme not in ("http", "https"):
+            if self.parsed.scheme not in ("http", "https", "ftp"):
                 raise ValueError("Unsupported url scheme: %s" %
                                  self.request.url)
             # urlsplit results have hostname and port results, but they
